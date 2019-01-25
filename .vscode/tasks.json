@@ -1,0 +1,52 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        // This task is only for compiling and debugging one C++ source code file.
+        // Relating to other source code files and header files is avaliable, 
+        // however, the entry of the program have to be this file you command to debug.
+        {
+            "label": "Quick Build for Single File",
+            "type": "shell",
+            "linux":{
+                "command": "g++", // Make sure that g++ is in your $PATH variable
+                "args": [
+                    "-g", "${fileDirname}/${fileBasename}", 
+                    "-o", "${fileDirname}/${fileBasenameNoExtension}.out",
+                    "-Wall", // If you want gcc to check the code more strictly
+                    "-std=c++11", // If you wanna c++11 standard
+                    "-lm", // If you would like to include math.h
+                    //"-lpthread" // If you would like to use mulit-thread library
+                    //,"--no-pie"
+                ]
+            },
+            "windows":{
+                "command": "g++", // This is for mingw-w64 compiler
+                "args": [
+                    "-g", "${fileDirname}/${fileBasename}", 
+                    "-o", "${fileDirname}/${fileBasenameNoExtension}.exe",
+                    //"-Wall", // If you want gcc to check the code more strictly
+                    //"-std=c++11", // If you wanna c++11 standard
+                    //"-lm", // If you would like to include math.h
+                    //"-lpthread" // If you would like to use mulit-thread library
+                ]
+            },
+            "presentation": {
+                "reveal": "always",
+                "echo": false,
+                "focus": true
+            },
+            "problemMatcher": {
+                "owner": "cpp",
+                "fileLocation": ["relative", "${fileDirname}"],
+                "pattern": {
+                    "regexp": "^(.*):(\\d+):(\\d+):\\s+(warning|error):\\s+(.*)$",
+                    "file": 1,
+                    "line": 2,
+                    "column": 3,
+                    "severity": 4,
+                    "message": 5
+                }
+            }            
+        }
+    ]
+}

@@ -1,0 +1,68 @@
+// This setting file includes some plans that I usually use.
+// Choose proper plan to run simple files or full projects.
+// Good luck!
+// --HySonger
+//
+// Some references are listed below:
+// ${workspaceFolder} ${workspaceRoot} the path of workspace directory
+// ${fileDirname} the path of the current file
+// ${fileBasenameNoExtension}  file name without the followed extension part 
+// $file ${fileBasename}  just file name 
+
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Node.js Quick Debug for Single File",
+      "program": "${file}",
+      // "console": "integratedTerminal",
+      // "internalConsoleOptions": "neverOpen" // Node.js output the printed result on the internal console by default
+      "internalConsoleOptions": "openOnSessionStart"
+    },
+    {
+      "name": "Python: Terminal (integrated)",
+      "type": "python",
+      "request": "launch",
+      "program": "${file}",
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen"
+    },
+    {
+      // This task is only for compiling and debugging one C++ source code file.
+      // Relating to other source code files and header files is avaliable, 
+      // however, the entry of the program has to be this file you command to debug.
+      "name": "C++ Quick Debug for Single File(GDB, Launch)", 
+      "type": "cppdbg",                           
+      "request": "launch",                        
+      "targetArchitecture": "x64",                
+      "args": [],
+      "cwd": "${fileDirname}",                  // 调试程序时的工作目录，一般为${workspaceRoot}
+      "externalConsole": true,                  // 调试时是否显示控制台窗口，一般设置为true显示控制台
+      "internalConsoleOptions": "neverOpen",    // 如果不设为neverOpen，调试时会跳到“调试控制台”选项卡", 显示gdb的输出信息，看你需要
+      "MIMode": "gdb",                          // 指定连接的调试器
+      "stopAtEntry": false,
+      "program": "${fileDirname}/${fileBasenameNoExtension}.exe", 
+      "linux": {
+        "program": "${fileDirname}/${fileBasenameNoExtension}.out", 
+        "miDebuggerPath": "/bin/gdb", // I think that this should adapt to most of Linux distributions' situations
+      },
+      "windows" :{
+        "program": "${fileDirname}/${fileBasenameNoExtension}.exe", 
+        "miDebuggerPath": "D:/Cygwin64/bin/gdb.exe", // !!!NOTICE!!! Please modify this arugment to meet with your install position of MinGW
+      },
+      "osx": {
+        // TO DO!
+      },
+      "setupCommands": [
+        {
+          "description": "Enable pretty-printing for GDB",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": false
+        }
+      ],
+      "preLaunchTask": "Quick Build for Single File"
+    }
+    ]
+  }
