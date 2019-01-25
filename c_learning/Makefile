@@ -1,7 +1,7 @@
 CFLAGS=-Wall -g
 
 clean:
-	rm -f int
+	rm -f cl1
 
 all:
-	int cl1
+	cl1
