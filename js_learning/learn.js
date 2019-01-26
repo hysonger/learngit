@@ -57,9 +57,13 @@ console.log(ze.pop()); // pop弹出项，返回该项。弹出空数组返回und
 ze.unshift("A", "bint");
 console.log(ze.shift()); // 这两个与push pop类似，但是是在数组头部操作
 
-var ip = [45, 69.2, 48, 32, 76, 19, 55.3];
-console.log(ip.reverse()); // 反序
-console.log(ip.sort()); // 排序
+var ip = [45, 69.2, 48, 32, 76, 19, 55.3]; // 注意排序函数是直接对原数组进行操作！返回的也是原数组
+ip.reverse();
+console.log(...ip);
+ip.sort();
+console.log(...ip);
+//console.log(ip.reverse()); // 反序
+//console.log(ip.sort()); // 排序
 
 ip.splice(1, 2, "6tyu", "hjkL"); // 从指定位置1删除2个元素，然后添加两个元素
 ip.concat(k); // 连接两个数组，返回新的数组
@@ -88,7 +92,9 @@ if(m.has(46)){
     m.delete(46);
 }
 console.log(m.size, m); // Map的大小
-console.log(m.keys(), m.values()); // 分别获取Map的键和值
+console.log(...m.keys(), ...m.values()); // 分别获取Map的键和值
+// 注意！！！这里的keys和values不是数组（这和Python不同），而是迭代器！
+// 如果要获取所有内容，用三个点进行全部获取并解包（要变成数组还要自己加上中括号）
 
 var s1 = new Set([1,5,4,2,1,2]); // Set
 s1.add(8);
