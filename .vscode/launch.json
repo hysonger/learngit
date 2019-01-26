@@ -13,6 +13,22 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "type": "firefox",
+      "request": "launch",
+      "reAttach": true,
+      "name": "Single HTML file debug in Firefox",
+      "file": "${file}"
+    },
+    {
+      "type": "chrome",
+      "request": "launch",
+      "name": "Single HTML file debug in Chrome",
+      "url": "file://${file}",
+      "linux": {
+        "runtimeExecutable": "/opt/google/chrome/chrome"
+      }
+    },
+    {
       "type": "node",
       "request": "launch",
       "name": "Node.js Quick Debug for Single File",
