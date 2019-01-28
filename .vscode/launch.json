@@ -17,7 +17,10 @@
       "request": "launch",
       "reAttach": true,
       "name": "Single HTML file debug in Firefox",
-      "file": "${file}"
+      "file": "${file}",
+      "windows": {
+        "firefoxExecutable": "D:\\Software\\Mozilla Firefox\\firefox.exe"
+      },
     },
     {
       "type": "chrome",
@@ -26,6 +29,9 @@
       "url": "file://${file}",
       "linux": {
         "runtimeExecutable": "/opt/google/chrome/chrome"
+      },
+      "windows": {
+        "runtimeExecutable": "C:\\Program Files (x86)\\Google\\Chrome Beta\\Application\\chrome.exe"
       }
     },
     {

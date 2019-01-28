@@ -3,9 +3,12 @@
         <title>HTML Javascript test</title>
         <meta charset="utf-8" />
         <script src="https://cdn.staticfile.org/jquery/2.0.3/jquery.min.js"></script>
-        <script src="learnhtml.js"></script>
+        <!-- 在head里面write会把所有东西写入到开头，此时DOM结构中尚未有body中内容 -->
     </head>
-    <body>
-
+    <body><!-- 但是在body里面write就写到script下面 -->
+        <h1>A Big Test</h1>
+        <div id="firstPart">If you would like it</div>
+        <p class="specialText">Javascript is a really fascinating language</p>
+        <script src="learnhtml.js"></script>
     </body>
 </html>
