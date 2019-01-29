@@ -1,0 +1,19 @@
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Upload and show a picture</title>
+    </head>
+    <body>
+        <div id="picArea" style="
+        border: 1px solid; 
+        width: 100%; 
+        height: 720px;
+        background-repeat: no-repeat; /* 禁止背景图片重复 */
+        background-position: center center; /* 背景图片居中 */
+        "></div>
+        <form enctype="multipart/form-data" method="POST" action="#"><input name="fileUpload" type="file"></input></form>
+        <!-- 这里的form可以不加，加这些是为了演示老版本HTML中如何才能向服务器提交文件 -->
+        <p>The file you have chosen:<div id="fileName">&nbsp;</div></p>
+        <script src="fileupload.js"></script><!-- 这个脚本必须加在body里面，否则DOM结构都没有，根本找不到这几个控件 -->
+    </body>
+</html>
