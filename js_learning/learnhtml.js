@@ -57,6 +57,8 @@ console.log(p1.innerHTML, p1.innerText, p1.textContent); // 三个显示一样
 // 而后两者将其视为在浏览器里面显示的文本，因此会对html结构编码，保证其不会实际生效
 // innerText不返回隐藏元素的文本，而textContent返回全部文本。IE<9不支持textContent
 
+console.log(p1.className, p1.classList); // 获取某个元素的class属性的方法
+
 var div_new = document.createElement("div");
 div_new.innerText = "<b>这个是新加入的div标签哦~</b>";
 document.body.appendChild(div_new); // 往最顶层插入东西好像只能这样，写body
