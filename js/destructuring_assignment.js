@@ -10,6 +10,7 @@ console.log(a, b, c, d);
 var arrs = [1, 5, null, 789];
 
 var [p, q, m = 5, n] = arrs; // 可以给一个默认值，防止没有接收到值而变成undefined的情况
+// 不过null貌似会覆盖默认值……
 
 [p, q] = [q, p] // 轻松交换变量
 
