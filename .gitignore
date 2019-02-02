@@ -30,3 +30,6 @@
 *.exe
 *.out
 *.app
+
+node_http/htdocs/*
+node_http/log/*

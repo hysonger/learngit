@@ -39,6 +39,8 @@
       "request": "launch",
       "name": "Node.js Quick Debug for Single File",
       "program": "${file}",
+      "cwd": "${fileDirname}",
+      // "args": ["-p", "8080", "-d", "htdocs"],
       // "console": "integratedTerminal",
       // "internalConsoleOptions": "neverOpen" // Node.js output the printed result on the internal console by default
       "internalConsoleOptions": "openOnSessionStart"

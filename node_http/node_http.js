@@ -21,7 +21,7 @@ var newpath_flag = false;
 // 本次日志准备
 var startDate = new Date();
 var logFileStream = fs.createWriteStream(
-    path.join(workdir, logPathname, `${startDate.toISOString()}.txt`)
+    path.join(workdir, logPathname, `${startDate.toISOString()}.log`)
     , "utf-8");
 
 // 日志记录函数
@@ -60,16 +60,16 @@ process.argv.slice(2).forEach(function(arg, index, array){
         // 这里定义参数解析规则
         log(`provided running argument ${arg}`);
         try{
-            var next_arg = array[index];
+            var next_arg = array[index + 1];
         }
         catch{
             // return;
         }
         if(arg === "-p" && !isNaN(next_arg)){
-            log(`argument provides special server port: ${arg}`);
-            server_port = parseInt(arg);
+            log(`argument provides special server port: ${next_arg}`);
+            server_port = parseInt(next_arg);
         }else if(arg === "-d"){
-            log(`argument provides special web docs path: ${path.resolve(next_arg)}`);
+            log(`argument provides special web docs path: ${next_arg}`);
             webroot = path.resolve(next_arg);
             newpath_flag = true;
         }else{
@@ -81,7 +81,9 @@ process.argv.slice(2).forEach(function(arg, index, array){
 });
 
 if(!newpath_flag){ webroot = path.join(workdir, dataPathname); }
+
 log(`Exact web root directory: ${webroot}`);
+log(`Exact server port: ${server_port}`)
 
 var server = http.createServer(function(request, response){
     try {
